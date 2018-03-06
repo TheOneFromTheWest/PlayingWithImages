@@ -1,27 +1,20 @@
 #include <iostream>
-#include <opencv2/highgui/highgui.hpp>
+#include "LoadImage.h" 
 
 int main()
 {
 	std::cout << "Hi\n";
-	std::cout << "Attempting to load image\n";
-	try
+	ImageLoader imLoader;
+	cv::Mat* pLenaImage;
+	imLoader.Load("./SampleImages/lena512.bmp", pLenaImage);
+	if (!pLenaImage->data)
 	{
-		cv::Mat lenaImage = cv::imread("./SampleImages/lena512.bmp", CV_LOAD_IMAGE_GRAYSCALE);
-		if (lenaImage.data)
-		{
-			std::cout << "Successfully loaded image!\n";
-		}
-		else
-		{
-			std::cout << "Failed to load image!\n	";
-			return -1;
-		}
+		std::cout << "Failed to load lena512!\n";
+		return 1;
 	}
-	catch (const std::exception& e)
+	else
 	{
-		std::cout << "Failed to load image due to exception!\n	";
-		return -1;
+		std::cout << "Loaded lena512!\n";
 	}
 
 	return 0;
