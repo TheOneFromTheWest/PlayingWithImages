@@ -32,6 +32,6 @@ std::shared_ptr<cv::Mat> ImageLoader::Load(const std::string& imageFile)
 
 	// Copy loaded image into ptr 
 	std::shared_ptr<cv::Mat> pImage;
-	pImage.reset(&image);
+	pImage.reset(new cv::Mat(image));
 	return pImage;
 }
