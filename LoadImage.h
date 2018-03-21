@@ -2,13 +2,14 @@
 #define LOAD_IMAGE_H
 
 #include <string>
+#include <memory>
 #include <opencv2/highgui/highgui.hpp>
 
 // Basic image loading using opencv lib
 class ImageLoader
 {
 public:
-	void Load(const std::string& imageFile, cv::Mat* pImage);
+	std::shared_ptr<cv::Mat> Load(const std::string& imageFile);
 };
 
 #endif

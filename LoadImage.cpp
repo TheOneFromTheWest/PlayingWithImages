@@ -6,7 +6,7 @@ bool ValidateImagePath(const std::string& imageFile)
 	return false;
 }
 
-void ImageLoader::Load(const std::string& imageFile, cv::Mat* pImage)
+std::shared_ptr<cv::Mat> ImageLoader::Load(const std::string& imageFile)
 {
 	cv::Mat image; 
 	// ValidateImagePath(imageFile);
@@ -20,16 +20,18 @@ void ImageLoader::Load(const std::string& imageFile, cv::Mat* pImage)
 		}
 		else
 		{
-			std::cout << "Failed to load image!\n	";
-			return;
+			std::cout << "Failed to load image!\n";
+			return nullptr;
 		}
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << "Failed to load image due to exception!\n	";
-		return;
+		std::cout << "Failed to load image due to exception!\n";
+		return nullptr;
 	}
 
 	// Copy loaded image into ptr 
-	pImage = &image;
+	std::shared_ptr<cv::Mat> pImage;
+	pImage.reset(&image);
+	return pImage;
 }
