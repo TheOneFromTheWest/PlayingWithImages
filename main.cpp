@@ -1,4 +1,4 @@
-#include <iostream>
+#include "precomp.h"
 #include "LoadImage.h" 
 
 int main()
@@ -17,5 +17,5 @@ int main()
 		std::cout << "Loaded lena512!\n";
 	}
 
-	return 0;
+		return 0;
 }
