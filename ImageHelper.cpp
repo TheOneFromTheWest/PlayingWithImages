@@ -3,8 +3,6 @@
 
 void ImageIllustrator::ShowImage(std::shared_ptr<cv::Mat> pImage)
 {
-/*
-	cv::imshow("Lena!",*pLenaImage);
+	cv::imshow("Lena!",*pImage);
 	cv::waitKey(0);
-*/
 }
