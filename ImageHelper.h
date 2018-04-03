@@ -8,7 +8,7 @@
 class ImageIllustrator
 {
 public:
-	void ShowImage(std::shared_ptr<cv::Mat> pImage);
+	void ShowImage(const std::string& title, std::shared_ptr<cv::Mat> pImage);
 };
 
 #endif
