@@ -18,7 +18,9 @@ int main()
 	}
 
 	ImageIllustrator imHelper;
-	imHelper.ShowImage(pLenaImage);	
+	imHelper.ShowImage("Lena!", pLenaImage);	
+
+
 
 	return 0;
 }
