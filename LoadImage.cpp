@@ -1,10 +1,12 @@
 #include "precomp.h"
 #include "LoadImage.h"
 
+/*
 bool ValidateImagePath(const std::string& imageFile)
 {
 	return false;
 }
+*/
 
 std::shared_ptr<cv::Mat> ImageLoader::Load(const std::string& imageFile)
 {
