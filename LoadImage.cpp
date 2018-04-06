@@ -18,17 +18,17 @@ std::shared_ptr<cv::Mat> ImageLoader::Load(const std::string& imageFile)
 		image = cv::imread(imageFile, CV_LOAD_IMAGE_GRAYSCALE);
 		if (image.data)
 		{
-			std::cout << "Successfully loaded image!\n";
+			std::cout << "Successfully loaded image '" << imageFile.c_str() << "'!\n";
 		}
 		else
 		{
-			std::cout << "Failed to load image!\n";
+			std::cout << "Failed to load image '" << imageFile.c_str() << "'!\n";
 			return nullptr;
 		}
 	}
 	catch (const std::exception& e)
 	{
-		std::cout << "Failed to load image due to exception!\n";
+		std::cout << "Failed to load image '" << imageFile.c_str() << "' due to exception!\n";
 		return nullptr;
 	}
 
