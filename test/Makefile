@@ -29,7 +29,7 @@ USER_DIR = ..
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 
 # Flags passed to the C++ compiler.
-CXXFLAGS += -ggdb -Wall -Wextra -pthread -std=c++11 
+CXXFLAGS += -ggdb -std=c++11 -Wall -Wextra -pthread 
 CXXFLAGS += `pkg-config --cflags opencv`
 
 # Link against opencv libs 
@@ -37,7 +37,7 @@ CVLIBS += `pkg-config --libs opencv`
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = UtLoadImage
+TESTS = UtLoadImage UtTransforms
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -86,3 +86,12 @@ UtLoadImage.o : UtLoadImage.cpp $(USER_DIR)/LoadImage.h $(GTEST_HEADERS)
 # Link against gtest_main.a since LoadImage has no main function.
 UtLoadImage : LoadImage.o UtLoadImage.o gtest.a
 	$(CXX) $(CPPFLAGS) $^ -o $@ $(CXXFLAGS) $(CVLIBS) -lpthread
+
+MotionModel.o : $(USER_DIR)/MotionModel.cpp $(USER_DIR)/MotionModel.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $(USER_DIR)/MotionModel.cpp
+
+UtTransforms.o : UtTransforms.cpp $(USER_DIR)/MotionModel.h $(GTEST_HEADERS)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c UtTransforms.cpp
+
+UtTransforms : MotionModel.o UtTransforms.o gtest.a
+	$(CXX) $(CPPFLAGS) $^ -o $@ $(CXXFLAGS) -lpthread
